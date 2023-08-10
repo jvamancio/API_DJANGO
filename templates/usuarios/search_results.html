@@ -1,0 +1,91 @@
+{% extends 'usuarios/base.html' %}
+
+
+{% block content %}
+<h4 style="margin: 20px;"> Atributos da ETP </h4>
+
+<form class="row g-3">
+    <div class="col-md-2">
+        <label for="inputEmail4" class="form-label"><b style="margin: 20px;">ETP N°</b></label>
+        <input type="text" class="form-control" id="inputEmail4" value="{{ data.etp }}">
+    </div>
+    <div class="col-md-2">
+        <label for="inputPassword4" class="form-label"><b> Tipo ETP</b></label>
+        <input type="text" class="form-control" id="inputPassword4" value="{{ data.tipoEtp }}">
+    </div>
+    <div class="col-4">
+        <label for="inputAddress" class="form-label"><b> Elaborador</b></label>
+        <input type="text" class="form-control" id="inputAddress" value="{{ data.elaborador }}">
+    </div>
+    <div class="col-2">
+        <label for="inputAddress2" class="form-label"><b> Demanda</b></label>
+        <input type="text" class="form-control" id="inputAddress2" value="{{ data.demanda }}">
+    </div>
+    <div class="col-md-2">
+        <label for="inputZip" class="form-label"><b> Vendor</b></label>
+        <input type="text" class="form-control" id="inputZip" value="{{ data.vendor }}">
+    </div>
+    <div class="col-md-2">
+        <label for="inputCity" class="form-label"><b style="margin: 20px;"> Motivador</b></label>
+        <input type="text" class="form-control" id="inputCity" value="{{ data.motivador }}">
+    </div>
+    <div class="col-md-4">
+        <label for="inputZip" class="form-label"><b> Descrição Macro do Projeto</b></label>
+        <input type="text" class="form-control" id="inputZip" value="{{ data.descricao_macro }}">
+    </div>
+    <div class="col-md-6">
+        <label for="inputZip" class="form-label"><b> Objetivo do Projeto</b></label>
+        <input type="text" class="form-control" id="inputZip" value="{{ data.objetivo }}">
+    </div>
+    <div class="col-md-12">
+        <label for="inputZip" class="form-label"><b style="margin: 20px;"> Titulo</b></label>
+        <input type="text" class="form-control" id="inputZip" value="{{ data.titulo}}">
+    </div>
+    <div class="col-12">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+                Check me out
+            </label>
+        </div>
+    </div>
+
+    <h4 style="margin: 20px;"> lista de OE's </h4>
+
+
+
+    <table style="margin: 20px;" class="table">
+
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">id</th>
+                <th scope="col">TipoElemento</th>
+                <th scope="col">numOE</th>
+                <th scope="col">TipoOE</th>
+                <th scope="col">Status</th>
+                <th scope="col">Descricao</th>
+            </tr>
+        </thead>
+        {% for i in data.data_smtx_oe_elemento %}
+        <tbody>
+            <tr>
+
+                <th><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
+                <td>{{ i.id }}</td>
+                <td>{{ i.TipoElemento }}</td>
+                <td>{{ i.numOE }}</td>
+                <td>{{ i.TipoOE }}</td>
+                <td>{{ i.Status }}</td>
+                <td>{{ i.Descricao }}</td>
+
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+{% endblock %}
