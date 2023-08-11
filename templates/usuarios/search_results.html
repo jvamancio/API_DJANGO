@@ -7,82 +7,142 @@
 <form class="row g-3">
     <div class="col-md-2">
         <label for="inputEmail4" class="form-label"><b style="margin: 20px;">ETP N°</b></label>
-        <input type="text" class="form-control" id="inputEmail4" value="{{ data.etp }}">
+        <input type="text" class="form-control" id="inputEmail4" value="{{ data.etp }}" disabled>
+    </div>
+    <div class="col-md-2">
+        <label for="validationDefault04" class="form-label"><b>Tipo de entrega</b></label>
+        <select class="form-select" id="validationDefault04" required>
+            <option selected disabled value="">-</option>
+            <option>Total</option>
+            <option>Parcial</option>
+            <option>Parcial Total</option>
+        </select>
     </div>
     <div class="col-md-2">
         <label for="inputPassword4" class="form-label"><b> Tipo ETP</b></label>
-        <input type="text" class="form-control" id="inputPassword4" value="{{ data.tipoEtp }}">
+        <input type="text" class="form-control" id="inputPassword4" value="{{ data.tipoEtp }}" disabled>
     </div>
-    <div class="col-4">
+    <div class="col-3">
         <label for="inputAddress" class="form-label"><b> Elaborador</b></label>
-        <input type="text" class="form-control" id="inputAddress" value="{{ data.elaborador }}">
+        <input type="text" class="form-control" id="inputAddress" value="{{ data.elaborador }}disabled" disabled>
     </div>
-    <div class="col-2">
+    <div class="col-3">
         <label for="inputAddress2" class="form-label"><b> Demanda</b></label>
-        <input type="text" class="form-control" id="inputAddress2" value="{{ data.demanda }}">
+        <input type="text" class="form-control" id="inputAddress2" value="{{ data.demanda }}" disabled>
     </div>
     <div class="col-md-2">
-        <label for="inputZip" class="form-label"><b> Vendor</b></label>
-        <input type="text" class="form-control" id="inputZip" value="{{ data.vendor }}">
+        <label for="inputZip" class="form-label"><b style="margin: 20px;"> Vendor</b></label>
+        <input type="text" class="form-control" id="inputZip" value="{{ data.vendor }}" disabled>
     </div>
     <div class="col-md-2">
         <label for="inputCity" class="form-label"><b style="margin: 20px;"> Motivador</b></label>
-        <input type="text" class="form-control" id="inputCity" value="{{ data.motivador }}">
+        <input type="text" class="form-control" id="inputCity" value="{{ data.motivador }}" disabled>
     </div>
     <div class="col-md-4">
         <label for="inputZip" class="form-label"><b> Descrição Macro do Projeto</b></label>
-        <input type="text" class="form-control" id="inputZip" value="{{ data.descricao_macro }}">
+        <input type="text" class="form-control" id="inputZip" value="{{ data.descricao_macro }}" disabled>
     </div>
-    <div class="col-md-6">
-        <label for="inputZip" class="form-label"><b> Objetivo do Projeto</b></label>
-        <input type="text" class="form-control" id="inputZip" value="{{ data.objetivo }}">
+    <div class="col-md-4">
+        <label for="inputZip" class="form-label"><b style="margin: 20px;"> Objetivo do Projeto</b></label>
+        <input type="text" class="form-control" id="inputZip" value="{{ data.objetivo }}" disabled>
     </div>
     <div class="col-md-12">
         <label for="inputZip" class="form-label"><b style="margin: 20px;"> Titulo</b></label>
-        <input type="text" class="form-control" id="inputZip" value="{{ data.titulo}}">
+        <input type="text" class="form-control" id="inputZip" value="{{ data.titulo}}" disabled>
     </div>
-    <div class="col-12">
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">
-                Check me out
-            </label>
+
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label"><b style="margin: 20px;">Informação complentar de
+                atributos</b></label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+    </div>
+
+    <h4 style="margin: 20px;"> lista de OE's concluídas</h4>
+    <div class="container" style="height: 400px;">
+        <div class="content">
+            <table style="margin: 20px;" class="table">
+
+                <thead>
+                    <tr>
+                        <th scope="col">Verificação</th>
+                        <th scope="col">id</th>
+                        <th scope="col">TipoElemento</th>
+                        <th scope="col">numOE</th>
+                        <th scope="col">TipoOE</th>
+                        <th scope="col">Status</th>
+                        
+                    </tr>
+                </thead>
+                {% for i in list_oes_total %}
+                <tbody>
+                    <tr>
+
+                        <th><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
+                        <td>{{ i.id }}</td>
+                        <td>{{ i.TipoElemento }}</td>
+                        <td>{{ i.numOE }}</td>
+                        <td>{{ i.TipoOE }}</td>
+                        <td>{{ i.Status }}</td>
+                        
+
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
         </div>
     </div>
 
-    <h4 style="margin: 20px;"> lista de OE's </h4>
-
-
-
+    <h4 style="margin: 20px;"> Rede Externa</h4>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label"><b style="margin: 20px;">Complemento Rede
+                Externa</b></label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+    </div>
+    <h5 style="margin: 20px;"> lista de OT's concluídas</h5>
     <table style="margin: 20px;" class="table">
 
         <thead>
             <tr>
-                <th scope="col">#</th>
+                <th scope="col"></th>
                 <th scope="col">id</th>
                 <th scope="col">TipoElemento</th>
                 <th scope="col">numOE</th>
                 <th scope="col">TipoOE</th>
-                <th scope="col">Status</th>
-                <th scope="col">Descricao</th>
             </tr>
         </thead>
-        {% for i in data.data_smtx_oe_elemento %}
+
+        {% for i in data.data_smtx_ots %}
         <tbody>
             <tr>
 
-                <th><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
-                <td>{{ i.id }}</td>
-                <td>{{ i.TipoElemento }}</td>
-                <td>{{ i.numOE }}</td>
-                <td>{{ i.TipoOE }}</td>
-                <td>{{ i.Status }}</td>
-                <td>{{ i.Descricao }}</td>
+                <th></th>
+                <td>{{ i.idWDMOTS }}</td>
+                <td>{{ i.ChaveOTS }}</td>
+                <td>{{ i.Sigla }}</td>
+                <td>{{ i.PropriedadeFibra }}</td>
 
             </tr>
         </tbody>
         {% endfor %}
     </table>
+
+    <h4 style="margin: 20px;"> Topologia</h4>
+    <div class="col-3">
+        <label for="inputAddress" class="form-label"><b style="margin: 20px;"> Topologia</b></label>
+        <input type="text" class="form-control" id="inputAddress" value="Topologia Disponível no servidor" disabled>
+    </div>
+
+    <div class="col-md-6">
+        <label for="exampleFormControlTextarea1" class="form-label"><b style="margin: 20px;">Link da
+                documentação</b></label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+    </div>
+
+    <h4 style="margin: 20px;"> Observações</h4>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label"><b style="margin: 20px;">Observações</b></label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+    </div>
 
     <div class="col-12">
         <button type="submit" class="btn btn-primary">Submit</button>
