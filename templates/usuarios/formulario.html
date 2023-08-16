@@ -1,0 +1,11 @@
+{% extends 'usuarios/base.html' %}
+
+{% block content %}
+    <h4> Dados preenchidos</h4>
+    <ul>
+        {% for i in atributos %}
+        <li>{{ i.etp }}</li>
+        <li>{{ i.tipo_entrega }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

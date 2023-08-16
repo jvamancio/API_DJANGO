@@ -4,57 +4,58 @@
 {% block content %}
 <h4 style="margin: 20px;"> Atributos da ETP </h4>
 
-<form class="row g-3">
+<form class="row g-3" action="{% url 'formulario' %}" method="post">
+    {% csrf_token %}
     <div class="col-md-2">
-        <label for="inputEmail4" class="form-label"><b style="margin: 20px;">ETP N°</b></label>
-        <input type="text" class="form-control" id="inputEmail4" value="{{ data.etp }}" disabled>
+        <label for="inputEtp" class="form-label"><b style="margin: 20px;">ETP N°</b></label>
+        <input type="text" class="form-control" id="input_etp" name="etp" value="{{ data.etp }}" disabled>
     </div>
     <div class="col-md-2">
-        <label for="validationDefault04" class="form-label"><b>Tipo de entrega</b></label>
-        <select class="form-select" id="validationDefault04" required>
+        <label for="validation_tipo_entrega" class="form-label"><b>Tipo de entrega</b></label>
+        <select class="form-select" id="validation_tipo_entrega" name="tipo_entrega" required>
             <option selected disabled value="">-</option>
             <option>Total</option>
             <option>Parcial</option>
-            <option>Parcial Total</option>
+            <option>Parcial Final</option>
         </select>
     </div>
     <div class="col-md-2">
-        <label for="inputPassword4" class="form-label"><b> Tipo ETP</b></label>
-        <input type="text" class="form-control" id="inputPassword4" value="{{ data.tipoEtp }}" disabled>
+        <label for="input_tipo_etp" class="form-label"><b> Tipo ETP</b></label>
+        <input type="text" class="form-control" id="input_tipo_etp" name="tipo_etp" value="{{ data.tipoEtp }}" disabled>
     </div>
     <div class="col-3">
-        <label for="inputAddress" class="form-label"><b> Elaborador</b></label>
-        <input type="text" class="form-control" id="inputAddress" value="{{ data.elaborador }}disabled" disabled>
+        <label for="input_elaborador" class="form-label"><b> Elaborador</b></label>
+        <input type="text" class="form-control" id="input_elaborador" name="elaborador" value="{{ data.elaborador }}disabled" disabled>
     </div>
     <div class="col-3">
-        <label for="inputAddress2" class="form-label"><b> Demanda</b></label>
-        <input type="text" class="form-control" id="inputAddress2" value="{{ data.demanda }}" disabled>
+        <label for="input_demanda" class="form-label"><b> Demanda</b></label>
+        <input type="text" class="form-control" id="input_demanda" name="demanda" value="{{ data.demanda }}" disabled>
     </div>
     <div class="col-md-2">
-        <label for="inputZip" class="form-label"><b style="margin: 20px;"> Vendor</b></label>
-        <input type="text" class="form-control" id="inputZip" value="{{ data.vendor }}" disabled>
+        <label for="input_vendor" class="form-label"><b style="margin: 20px;"> Vendor</b></label>
+        <input type="text" class="form-control" id="input_vendor" name="vendor" value="{{ data.vendor }}" disabled>
     </div>
     <div class="col-md-2">
-        <label for="inputCity" class="form-label"><b style="margin: 20px;"> Motivador</b></label>
-        <input type="text" class="form-control" id="inputCity" value="{{ data.motivador }}" disabled>
+        <label for="input_motivador" class="form-label"><b style="margin: 20px;"> Motivador</b></label>
+        <input type="text" class="form-control" id="input_motivador" name="motivador" value="{{ data.motivador }}" disabled>
     </div>
     <div class="col-md-4">
-        <label for="inputZip" class="form-label"><b> Descrição Macro do Projeto</b></label>
-        <input type="text" class="form-control" id="inputZip" value="{{ data.descricao_macro }}" disabled>
+        <label for="input_des_macro_project" class="form-label"><b> Descrição Macro do Projeto</b></label>
+        <input type="text" class="form-control" id="input_des_macro_project" name="des_macro_project" value="{{ data.descricao_macro }}" disabled>
     </div>
     <div class="col-md-4">
-        <label for="inputZip" class="form-label"><b style="margin: 20px;"> Objetivo do Projeto</b></label>
-        <input type="text" class="form-control" id="inputZip" value="{{ data.objetivo }}" disabled>
+        <label for="input_obj_project" class="form-label"><b style="margin: 20px;"> Objetivo do Projeto</b></label>
+        <input type="text" class="form-control" id="input_obj_project" name="obj_project" value="{{ data.objetivo }}" disabled>
     </div>
     <div class="col-md-12">
-        <label for="inputZip" class="form-label"><b style="margin: 20px;"> Titulo</b></label>
-        <input type="text" class="form-control" id="inputZip" value="{{ data.titulo}}" disabled>
+        <label for="input_titulo" class="form-label"><b style="margin: 20px;"> Titulo</b></label>
+        <input type="text" class="form-control" id="input_titulo" name="titulo" value="{{ data.titulo}}" disabled>
     </div>
 
     <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label"><b style="margin: 20px;">Informação complentar de
+        <label for="input_info_complementar_atributos" class="form-label"><b style="margin: 20px;">Informação complentar de
                 atributos</b></label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+        <textarea class="form-control" id="input_info_complementar_atributos" name="info_complementar_atributos" rows="5"></textarea>
     </div>
 
     <h4 style="margin: 20px;"> lista de OE's concluídas</h4>
@@ -70,20 +71,20 @@
                         <th scope="col">numOE</th>
                         <th scope="col">TipoOE</th>
                         <th scope="col">Status</th>
-                        
+
                     </tr>
                 </thead>
-                {% for i in list_oes_total %}
+                {% for i in data.list_oes_total %}
                 <tbody>
                     <tr>
 
-                        <th><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
+                        <th><input class="form-check-input" type="checkbox" value="" id="input_lista_oes" name="lista_oes"></th>
                         <td>{{ i.id }}</td>
                         <td>{{ i.TipoElemento }}</td>
                         <td>{{ i.numOE }}</td>
                         <td>{{ i.TipoOE }}</td>
                         <td>{{ i.Status }}</td>
-                        
+
 
                     </tr>
                 </tbody>
@@ -94,58 +95,65 @@
 
     <h4 style="margin: 20px;"> Rede Externa</h4>
     <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label"><b style="margin: 20px;">Complemento Rede
+        <label for="input_complemento_rede_externa" class="form-label"><b style="margin: 20px;">Complemento Rede
                 Externa</b></label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+        <textarea class="form-control" id="input_complemento_rede_externa" name="input_complemento_rede_externa" rows="2"></textarea>
     </div>
     <h5 style="margin: 20px;"> lista de OT's concluídas</h5>
-    <table style="margin: 20px;" class="table">
+    <div class="container" style="height: 200px;">
+        <div class="content">
+            <table style="margin: 20px;" class="table">
 
-        <thead>
-            <tr>
-                <th scope="col"></th>
-                <th scope="col">id</th>
-                <th scope="col">TipoElemento</th>
-                <th scope="col">numOE</th>
-                <th scope="col">TipoOE</th>
-            </tr>
-        </thead>
+                <thead>
+                    <tr>
+                        <th scope="col">Verificação OT's</th>
+                        <th scope="col"></th>
+                        <th scope="col">id</th>
+                        <th scope="col">TipoElemento</th>
+                        <th scope="col">numOE</th>
+                        <th scope="col">TipoOE</th>
+                    </tr>
+                </thead>
 
-        {% for i in data.data_smtx_ots %}
-        <tbody>
-            <tr>
+                {% for i in data.data_smtx_ots %}
+                <tbody>
+                    <tr>
 
-                <th></th>
-                <td>{{ i.idWDMOTS }}</td>
-                <td>{{ i.ChaveOTS }}</td>
-                <td>{{ i.Sigla }}</td>
-                <td>{{ i.PropriedadeFibra }}</td>
+                        <th><input class="form-check-input" type="checkbox" value="" id="input_lista_ots" name="input_lista_ots"></th>
+                        <td>{{ i.idWDMOTS }}</td>
+                        <td>{{ i.ChaveOTS }}</td>
+                        <td>{{ i.Sigla }}</td>
+                        <td>{{ i.PropriedadeFibra }}</td>
 
-            </tr>
-        </tbody>
-        {% endfor %}
-    </table>
-
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
     <h4 style="margin: 20px;"> Topologia</h4>
     <div class="col-3">
-        <label for="inputAddress" class="form-label"><b style="margin: 20px;"> Topologia</b></label>
-        <input type="text" class="form-control" id="inputAddress" value="Topologia Disponível no servidor" disabled>
+        <label for="input_topologia" class="form-label"><b style="margin: 20px;"> Topologia</b></label>
+        <input type="text" class="form-control" id="input_topologia" name="input_topologia" value="Topologia Disponível no servidor" disabled>
     </div>
 
     <div class="col-md-6">
-        <label for="exampleFormControlTextarea1" class="form-label"><b style="margin: 20px;">Link da
+        <label for="input_link_doc" class="form-label"><b style="margin: 20px;">Link da
                 documentação</b></label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+        <textarea class="form-control" id="input_link_doc" name="input_link_doc" rows="1"></textarea>
     </div>
 
     <h4 style="margin: 20px;"> Observações</h4>
     <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label"><b style="margin: 20px;">Observações</b></label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+        <label for="input_obs" class="form-label"><b style="margin: 20px;">Observações</b></label>
+        <textarea class="form-control" id="input_obs" name="input_obs" rows="5"></textarea>
     </div>
 
     <div class="col-12">
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 </form>
+
+
+
 {% endblock %}

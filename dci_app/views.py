@@ -1,8 +1,7 @@
 from django.shortcuts import render
-
-from django.shortcuts import render
+from .models import ETP, OE
 import requests
-import pdb
+
 
 
 def home(request):
@@ -24,12 +23,20 @@ def search_results(request):
             data = response.json()
             print(response)
             
-            list_oes_total = lista_oes(data)
+            list_elemento = data["data_smtx_oe_elemento"]
+            list_circuito = data["data_smtx_oe_circuito"]
+            list_odu = data["data_smtx_oe_odu"]
+            list_och = data["data_smtx_oe_och"]
+
+            list_oes_total = list_elemento + list_circuito + list_odu + list_och
+
+            data["list_oes_total"] = list_oes_total
+            #list_oes_total = lista_oes(data)
             
 
             context = {
-                    'data': data,
-                    'list_oes_total' : list_oes_total
+                    'data': data
+                    #'list_oes_total' : list_oes_total
                 }
             print('entrei nas oes')
             print(list_oes_total)
@@ -52,4 +59,13 @@ def lista_oes(data):
 
     list_oes_total = list_elemento + list_circuito + list_odu + list_och
 
-    return list_oes_total
+    data["list_oes_total"] = list_oes_total
+
+    return data
+
+def formulario(request):
+    
+    atributos = ETP.objects.all()
+    listaOE = OE.objects.all()
+    print(listaOE)
+    return render(request, 'usuarios/formulario.html', {'atributos': atributos, 'listaOE': listaOE})

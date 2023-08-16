@@ -1,3 +1,5 @@
+{% load static %}
+
 <!doctype html>
 <html lang="en">
 
@@ -37,10 +39,10 @@
 
 <body>
 
-    <nav style="background-color: rgb(94, 43, 107) !important;" class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav style="background-color: rgb(136, 37, 161) !important;" class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a style="color: white !important;" class="navbar-brand" href="#">
-                <img src="vivo-logo-1.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                <img src="{% static 'C:\Users\A0157552\Desktop\Project_Dci\setup\static\assets\Vivo+Vivinho_Branco_H_2020V1.png' %}" alt="" width="67" height="27" class="d-inline-block align-text-top">
                 <i>DCI online</i>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -73,9 +75,9 @@
                     </li>
                 </ul>
                 <form class="d-flex" action="{% url 'search_results' %}" method="GET">{% csrf_token %}
-                    <input id="search_results" name="search_results" class="form-control me-2" type="search"
-                        placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <input id="search_results"  name="search_results" class="form-control me-2" type="search"
+                        placeholder="N°ETP: 0000-0000" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit" style="color: #ffffff;">Pesquisar</button>
                 </form>
             </div>
         </div>
